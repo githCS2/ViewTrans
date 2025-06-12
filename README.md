@@ -1,18 +1,61 @@
-ViewTrans
+# ViewTrans
 
-View-Tokenized Transformer for Sinogram Restoration in Sparse-View CT
+**View-Tokenized Transformer for Sinogram Restoration in Sparse-View CT**
+
+---
+
+## 🧠 Overview
+
+**ViewTrans** is a novel deep learning framework for restoring full-view sinograms from sparse-view inputs in computed tomography (CT).
+
+Unlike conventional vision Transformers that tokenize 2D images by patches, **ViewTrans introduces a _view-tokenized_ strategy**, treating each fan-beam projected vector as a token — fully consistent with the physics of CT scanning.
+
+**Key Features:**
+- Physics-aware tokenization based on fan-beam views
+- Works in the sinogram domain
+- Can be paired with:
+  - Traditional **FBP layer** for end-to-end sparse-view CT reconstruction
+  - Dual-domain pipelines for improved reconstruction quality
+
+---
+
+## ⚙️ Requirements
+
+- Python 3.8 or higher  
+- PyTorch 1.11.0 or higher  
+
+## 📁 Dataset Acquisition
+
+Download the datasets from the following link:
+
+🔗 [Google Drive - ViewTrans Dataset](https://drive.google.com/drive/folders/19nDIF-LnSjBrPtOfsnwXlJ5-4HOfNr4i?usp=drive_link)
+
+Then place the `.npz` files into the `./data` directory:
 
 
-Overview:
-ViewTrans is a novel deep learning framework for restoring full-view sinograms from sparse-view inputs in computed tomography (CT). Unlike conventional vision Transformers that tokenize 2D images by patches, ViewTrans introduces a view-tokenized strategy, treating each fan-beam projected vector as a token — fully consistent with the physics of CT scanning. It can either be paired with a traditional FBP layer for end-to-end sparse-view CT reconstruction, or serve as a versatile component within dual-domain reconstruction pipelines, operating specifically in the sinogram domain.
-Requirements:
-Python 3.8 or higher
-Pytorch 1.11.0 or higher
+---
 
-Dataset Acquisition:
-You can download datasets used in this project from https://drive.google.com/drive/folders/19nDIF-LnSjBrPtOfsnwXlJ5-4HOfNr4i?usp=drive_link, then put the train and test data (npz files) in the subdirectory ./data.
+## 🚀 Training & Testing
 
-Training & Testing:
-You can train the model from scratch by running train.py, or directly evaluate the reconstruction performance on a sample image using test.py. The pretrained model is already uploaded in the subdirectory ./weights/ct_predict_test.pth.
+### Train from Scratch
 
-The file Matrix_A.npz is a precomputed system matrix generated using Generate_A_Matrrx from the https://github.com/githCS2/FP_FBP.
+```bash
+python train.py
+```
+
+###Evaluate on a Sample Image
+```bash
+python test.py
+```
+
+The pretrained model is included at:
+./weights/ct_predict_test.pth
+
+## 🧩 System Matrix
+
+The file `Matrix_A.npz` is a precomputed system matrix used in the reconstruction pipeline.
+
+It was generated using the `Generate_A_Matrrx` function from this repository:
+
+🔗 [https://github.com/githCS2/FP_FBP](https://github.com/githCS2/FP_FBP)
+
