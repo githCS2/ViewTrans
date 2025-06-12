@@ -43,7 +43,7 @@ Then place the `.npz` files into the `./data` directory:
 python train.py
 ```
 
-###Evaluate on a Sample Image
+### Evaluate on a Sample Image
 ```bash
 python test.py
 ```
